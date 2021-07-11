@@ -6,12 +6,22 @@
 	<title>{%block title%}Главная{%endblock%}</title>
 	<link rel="stylesheet" type="text/css" href="{%static 'MyBaseProject/style.css' %}">
 	<link rel="stylesheet" href="{% static 'MyBaseProject/fonts/font-awesome/css/font-awesome.css' %}">
-</div>
     {%block css%}
     {%endblock%}
 </head>
 <body>
 <div class="container">
+    <div class="header clearfix">
+        <a href="{% url 'index' %}" class="logo"></a>
+        <ul class="menu">
+            <li><a href="{% url 'clubsapp:index' %}" class="active">Клубы</a></li>
+            <li><a href="{% url 'clubstateapp:index' %}">Сотрудники Клуба</a></li>
+            <li><a href="{% url 'stadiumsapp:index' %}">Стадионы</a></li>
+            <li><a href="{% url 'attestationsapp:index' %}">Аттестация</a></li>
+            <li><a href="{% url 'kdkapp:index' %}">КДК</a></li>
+        </ul>
+    <a href="#" class="search"></a>
+</div>
     {%block content%}
     {%endblock%}
     <div class="clr"></div>

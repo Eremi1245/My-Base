@@ -24,6 +24,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index,name='index'),
     # path('auth', include('authapp.urls', namespace='authapp')),
+    path('clubs', include('clubsapp.urls', namespace='clubsapp')),
+    path('stadiums', include('stadiumsapp.urls', namespace='stadiumsapp')),
+    path('kdk', include('kdkapp.urls', namespace='kdkapp')),
+    path('state', include('clubstateapp.urls', namespace='clubstateapp')),
+    path('attestation', include('attestationsapp.urls', namespace='attestationsapp')),
 ]
 
 if settings.DEBUG:
