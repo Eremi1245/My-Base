@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 
 from clubsapp.models import Clubs
@@ -42,14 +44,39 @@ class Attestations(models.Model):
                                max_length=32,
                                choices=foundation_document,
                                default='Нет')
+    document_upload = models.FileField(verbose_name='загрузить документ',
+                     upload_to='attestations_documents',
+                     default=date(1,1,1))
+    document_under = models.DateField(verbose_name='Срок действия документа')
 
     notes = models.TextField(verbose_name='Примечание', blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def save(self, *args, **kwargs):
+        self.application_1.__dict__['field'].upload_to=f'attestations' \
+                                                       f'/{self.club.shrt_name}-{self.stadium.shrt_name} {self._year}' \
+                                                       f'/documents'
+        self.application_2.__dict__['field'].upload_to = f'attestations' \
+                                                       f'/{self.club.shrt_name}-{self.stadium.shrt_name} {self._year}' \
+                                                       f'/documents'
+        self.application_3.__dict__['field'].upload_to = f'attestations' \
+                                                       f'/{self.club.shrt_name}-{self.stadium.shrt_name} {self._year}' \
+                                                       f'/documents'
+        self.application_4.__dict__['field'].upload_to = f'attestations' \
+                                                       f'/{self.club.shrt_name}-{self.stadium.shrt_name} {self._year}' \
+                                                       f'/documents'
+        self.application_5.__dict__['field'].upload_to = f'attestations' \
+                                                       f'/{self.club.shrt_name}-{self.stadium.shrt_name} {self._year}' \
+                                                       f'/documents'
+        self.document_upload.__dict__['field'].upload_to = f'attestations' \
+                                                       f'/{self.club.shrt_name}-{self.stadium.shrt_name} {self._year}' \
+                                                       f'/documents'
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return f'{self.club.shrt_name}-{self.stadium.shrt_name} {self._year} год'
+        return f'{self.club.shrt_name}-{self.stadium.shrt_name} {self._year}'
 
     class Meta:
         verbose_name = 'Аттестация'

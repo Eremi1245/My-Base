@@ -32,6 +32,15 @@ class Clubs(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def save(self, *args, **kwargs):
+        self.ustav.__dict__['field'].upload_to=f'clubs/{self.shrt_name}/clubs_documents'
+        self.reg_in_min_just.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/clubs_documents'
+        self.reg_in_tax.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/clubs_documents'
+        self.creat_club.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/clubs_documents'
+        self.creat_rucovod.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/clubs_documents'
+        self.ofice.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/clubs_documents'
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.shrt_name
 

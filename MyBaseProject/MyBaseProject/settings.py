@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'clubsapp',
     'stadiumsapp',
     'attestationsapp',
+    'clubstateapp',
+    'kdkapp',
 ]
 
 MIDDLEWARE = [

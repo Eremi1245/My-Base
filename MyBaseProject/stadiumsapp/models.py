@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 
 
@@ -16,9 +18,9 @@ class Stadiums(models.Model):
     in_Reg_stad = models.FileField(verbose_name='Реестр Видов Спорта',upload_to='stadiums_documents', blank=True)
     conf_in_expluatation = models.FileField(verbose_name='Ввод в эксплуатац',upload_to='stadiums_documents', blank=True)
     instr_pub_order = models.FileField(verbose_name='Инструкция безопасности',upload_to='stadiums_documents', blank=True)
-    instr_pub_order_date_until = models.DateField (verbose_name='Инструкция безопасности до',blank=True)
+    instr_pub_order_date_until = models.DateField (verbose_name='Инструкция безопасности до',default=date(1,1,1))
     act_categ = models.FileField(verbose_name='Акт категорирования',upload_to='stadiums_documents', blank=True)
-    act_categ_date_until = models.DateField(verbose_name='Акт категорирования до', blank=True)
+    act_categ_date_until = models.DateField(verbose_name='Акт категорирования до', default=date(1,1,1))
     statd_plan = models.FileField(verbose_name='План стадиона',upload_to='stadiums_documents', blank=True)
     category_RFS = models.FileField(verbose_name='Категория РФС',upload_to='stadiums_documents', blank=True)
     Attempt = 'Допущен'
@@ -32,6 +34,15 @@ class Stadiums(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.in_Reg_stad.__dict__['field'].upload_to=f'stadiums/{self.shrt_name}/stadiums_documents'
+        self.conf_in_expluatation.__dict__['field'].upload_to = f'stadiums/{self.shrt_name}/stadiums_documents'
+        self.instr_pub_order.__dict__['field'].upload_to = f'stadiums/{self.shrt_name}/stadiums_documents'
+        self.act_categ.__dict__['field'].upload_to = f'stadiums/{self.shrt_name}/stadiums_documents'
+        self.statd_plan.__dict__['field'].upload_to = f'stadiums/{self.shrt_name}/stadiums_documents'
+        self.category_RFS.__dict__['field'].upload_to = f'stadiums/{self.shrt_name}/stadiums_documents'
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.shrt_name
