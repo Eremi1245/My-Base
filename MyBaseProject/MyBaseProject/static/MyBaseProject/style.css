@@ -1044,3 +1044,7 @@ td:first-child {
 .related-products a:hover .text{
 	display: block;
 }
+
+.cards{
+    display:flex;
+}

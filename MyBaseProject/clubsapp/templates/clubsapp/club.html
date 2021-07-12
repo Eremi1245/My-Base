@@ -1,0 +1,16 @@
+{%extends 'clubsapp/base.html'%}
+{%load static%}
+{%block title%}{{ title|title }}{%endblock%}
+{%block content%}
+<div class="cards" style="display:flex">
+    {% for club in clubs %}
+    <div class="card" style="width: 18rem;">
+        <img src="media/{{club.avatar}}" class="card-img-top" height="350" alt="avatar">
+        <div class="card-body">
+            <h5 class="card-title">{{club.shrt_name}}</h5>
+            <p class="card-text">{{club.status}}</p>
+            <a href="{% url 'clubsapp:club_info' %}" class="btn btn-primary">Смотреть</a>
+        </div>
+    </div>
+    {%endfor%}
+{%endblock%}

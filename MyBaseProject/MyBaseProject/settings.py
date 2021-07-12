@@ -62,7 +62,7 @@ ROOT_URLCONF = 'MyBaseProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['MyBaseProject/templates'],
+        'DIRS': ['MyBaseProject/templates','clubsapp/templates/clubsapp'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,6 +129,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "MyBaseProject", "static"),
+    os.path.join(BASE_DIR, "media"),
 )
 
 MEDIA_URL = '/media/'

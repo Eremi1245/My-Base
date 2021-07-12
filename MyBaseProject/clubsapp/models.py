@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Clubs(models.Model):
+    avatar = models.ImageField(verbose_name='аватар',upload_to='clubs_avatars')
     name = models.CharField(verbose_name='Название', max_length=128, unique=True)
     shrt_name = models.CharField(verbose_name='Сокращенное Название', max_length=128, unique=True)
     email = models.EmailField(verbose_name='почта', blank=True)
@@ -33,6 +34,7 @@ class Clubs(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
+        self.avatar.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/avatar'
         self.ustav.__dict__['field'].upload_to=f'clubs/{self.shrt_name}/clubs_documents'
         self.reg_in_min_just.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/clubs_documents'
         self.reg_in_tax.__dict__['field'].upload_to = f'clubs/{self.shrt_name}/clubs_documents'
