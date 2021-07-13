@@ -14,7 +14,7 @@ class Teams(models.Model):
     place_of_match=models.ForeignKey(Stadiums,
                                      on_delete=models.CASCADE,
                                      verbose_name='Место проведения матчей',
-                                     )
+                                     default=1)
     football_field=models.CharField(verbose_name='Номер поля',max_length=32,default='единственное поле')
     club_league = 'Клубная Лига'
     first_league = 'Первая Лига'

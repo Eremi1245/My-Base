@@ -46,8 +46,8 @@ class Attestations(models.Model):
                                default='Нет')
     document_upload = models.FileField(verbose_name='загрузить документ',
                      upload_to='attestations_documents',
-                     default=date(1,1,1))
-    document_under = models.DateField(verbose_name='Срок действия документа')
+                                       )
+    document_under = models.DateField(verbose_name='Срок действия документа',default=date(1,1,1))
 
     notes = models.TextField(verbose_name='Примечание', blank=True)
 
