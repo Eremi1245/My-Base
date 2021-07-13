@@ -10,7 +10,7 @@ def club(request):
         'title': title,
         'clubs': clubs,
     }
-    return render(request, 'stadium.html', context)
+    return render(request, 'club.html', context)
 
 
 class Counter:
@@ -36,6 +36,6 @@ def club_info(request, id):
         'count': count,
     }
     return render(request,
-                  'stad_info.html',
+                  'club_info.html',
                   context
                   )

@@ -62,7 +62,7 @@ ROOT_URLCONF = 'MyBaseProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['MyBaseProject/templates','clubsapp/templates/clubsapp'],
+        'DIRS': ['MyBaseProject/templates','clubsapp/templates/clubsapp','stadiumsapp/templates/stadiumsapp'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
