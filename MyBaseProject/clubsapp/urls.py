@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import club,club_info
+from .views import club, club_info
 
 app_name = 'clubsapp'
 
 urlpatterns = [
     path('', club, name='index'),
-    path('club_info',club_info,name='club_info'),
+    path(r'club_info<id>', club_info, name='club_info'),
 ]
