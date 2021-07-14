@@ -15,7 +15,7 @@
         <a href="{% url 'index' %}" class="logo"></a>
         {% if user.is_authenticated %}
             <ul class="menu">
-                <li><a href="{% url 'clubsapp:index' %}" class="active">Клубы</a></li>
+                <li><a href="{% url 'clubsapp:index' %}">Клубы</a></li>
                 <li><a href="{% url 'clubstateapp:index' %}">Сотрудники Клуба</a></li>
                 <li><a href="{% url 'stadiumsapp:index' %}">Стадионы</a></li>
                 <li><a href="{% url 'attestationsapp:index' %}">Аттестация</a></li>
