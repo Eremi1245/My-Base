@@ -64,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['MyBaseProject/templates','clubsapp/templates/clubsapp','stadiumsapp/templates/stadiumsapp',
-                 'attestationsapp/templates/attestationsapp','kdkapp/templates/kdkapp'],
+                 'attestationsapp/templates/attestationsapp','kdkapp/templates/kdkapp','clubstateapp/templates/clubstateapp'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
